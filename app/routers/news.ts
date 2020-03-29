@@ -1,5 +1,7 @@
 // app/routers/news.ts
-export default (app: any) => {
+import { Application } from 'egg';
+
+export default (app: Application) => {
   const { router, controller } = app;
 
   router.get('/news', controller.news.list);

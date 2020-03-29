@@ -35,10 +35,30 @@ export default (appInfo: EggAppInfo) => {
   };
 
   // add your egg config in here
-  config.middleware = [];
+  config.middleware = [
+    'robot',
+  ];
 
+  // 添加防爬虫配置
+  config.robot = {
+    ua: [
+      /Baiduspider/i, // 百度搜索引擎的ua
+    ],
+  };
+
+  // 设置静态文件
   config.siteFile = {
     '/favicon.ico': fs.readFileSync(path.join(appInfo.baseDir, 'app/public/favicon.png')),
+  };
+
+  // sequelize配置
+  config.sequelize = {
+    dialect: 'mysql',
+    host: 'rm-bp103ftn522j8te35jo.mysql.rds.aliyuncs.com',
+    port: 3306,
+    username: 'visitor',
+    password: '123456ok',
+    database: 'super-newspaper',
   };
 
   // the return config will combines to EggAppConfig
